@@ -6,16 +6,13 @@ const operators = {
     'w': (1000 * 60 * 60 * 24 * 7),
 }
 
-
 const add = (passedDate, diff) => {
-
     const diffOperator = diff[diff.length - 1]
     const diffNum = diff.split(diffOperator)[0]
 
     if (operators[diffOperator]) {
         const newDate = passedDate.getTime() + (operators[diffOperator] * diffNum)
         return new Date(newDate)
-
     }
 
     let splitDate = passedDate.toISOString().split('-')
@@ -28,6 +25,6 @@ const add = (passedDate, diff) => {
 
     splitDate[0] = Number(splitDate[0]) + Number(diffNum)
     return new Date(splitDate.join('-'))
-
 }
 
+module.exports = add
